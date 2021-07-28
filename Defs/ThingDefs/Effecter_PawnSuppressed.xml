@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Visual effect particle spawner for suppression (huddled) effect. Spread out, non-moving, short lived stars. -->
+  <EffecterDef>
+    <defName>Suppressed</defName>
+    <description>a</description>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_DrifterEmoteChance</subEffecterClass>
+        <scale>
+          <!-- Scale is larger to show 'spark' effects. Reduce confusing with 'shiny' or 'magic' -->
+          <min>1.5</min>
+          <max>2.7</max>
+        </scale>
+        <chancePerTick>0.05</chancePerTick>
+        <positionRadius>0.2</positionRadius>
+        <moteDef>Mote_SuppressedStars</moteDef>
+        <speed>
+          <min>0.0</min>
+          <max>0.0</max>
+        </speed>
+        <angle>
+          <min>-80</min>
+          <max>80</max>
+        </angle>
+      </li>
+    </children>
+  </EffecterDef>
+</Defs>
