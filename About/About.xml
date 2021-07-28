@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Suppression (Continued)</name>
   <packageId>Mlie.Suppression</packageId>
@@ -10,8 +10,24 @@
     <li>1.2</li>
     <li>1.3</li>
   </supportedVersions>
-  <modDependencies />
-  <loadAfter />
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+    <li>
+      <packageId>UnlimitedHugs.HugsLib</packageId>
+      <displayName>HugsLib</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/818773962</steamWorkshopUrl>
+      <downloadUrl>https://github.com/UnlimitedHugs/RimworldHugsLib/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>UnlimitedHugs.HugsLib</li>
+  </loadAfter>
   <description>[img]https://i.imgur.com/WAEzk68.png[/img]
 Update of YAYO (Original by D A)s mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2016866580
@@ -31,11 +47,11 @@ Adds suppression mechanics and it is bad.
 
 Causes pawns to become suppressed if they take too much heavy fire. Pawns will make themselves a smaller target, causing them to move slower, aim worse and aim slower. Pawns recover from suppression over time, greater when they are not taking much fire.
 
-Intent is to slow down fights a bit so you don&apos;t have to micromanage every colonist (if they are in lots of danger, they will tend to duck, reducing her chance to be hit). Also allows for concentrating fire to slow targets, such as charging melee swarms. And it gives a bit of a reason to spread defenses out a bit more.
+Intent is to slow down fights a bit so you don't have to micromanage every colonist (if they are in lots of danger, they will tend to duck, reducing her chance to be hit). Also allows for concentrating fire to slow targets, such as charging melee swarms. And it gives a bit of a reason to spread defenses out a bit more.
 
 
 [b][h1]Details[/h1][/b]
-Adds a hediff &apos;Suppressed&apos; when taking fire that will collect suppression from any bullet impacts that are near the pawn. It clears itself over time when not taking fire.
+Adds a hediff 'Suppressed' when taking fire that will collect suppression from any bullet impacts that are near the pawn. It clears itself over time when not taking fire.
 
 The amount of suppression is balanced roughly around the LMG, where 2-3 bursts should suppress a single target. Lower tier weapons should then only be able to suppress with multiple shooters. Automatic weapons suppress better than single shot. Higher damage rounds suppress much more than lower (sniper rifles suppress dramatically more than pistols per shot).
 
@@ -44,10 +60,10 @@ It should not have a huge impact on the way fights work. It is a side thing.
 
 
 [b][h1]Recommended mod ( Not Required )[/h1][/b]
-Yayo&apos;s Combat : Combat improvements
+Yayo's Combat : Combat improvements
 https://steamcommunity.com/sharedfiles/filedetails/?id=2038409475
 
-Yayo&apos;s Shooting : Add Shooting Style
+Yayo's Shooting : Add Shooting Style
 https://steamcommunity.com/sharedfiles/filedetails/?id=2020785943
 
 Suppression
@@ -79,4 +95,3 @@ Origianl mod by D A(Sonya Wins) https://steamcommunity.com/sharedfiles/filedetai
 [/list]
 </description>
 </ModMetaData>
-
