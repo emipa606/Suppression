@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Effect inside the health tab. Accumulates the suppression, makes it fade and adds in the negative effects of suppression. -->
+  <Suppressed.label>Suppression</Suppressed.label>
+  <Suppressed.stages.0.label>0 stable</Suppressed.stages.0.label>
+  <Suppressed.stages.1.label>-1 Nerveux</Suppressed.stages.1.label>
+  <Suppressed.stages.2.label>-2 Inquiet</Suppressed.stages.2.label>
+  <Suppressed.stages.3.label>-3 Confusion: réduit la vitesse d'attaque, la vitesse de déplacement et la précision</Suppressed.stages.3.label>
+  <Suppressed.stages.4.label>-4 Sujet à la peur: réduit la vitesse d'attaque, la vitesse de déplacement et la précision</Suppressed.stages.4.label>
+</LanguageData>

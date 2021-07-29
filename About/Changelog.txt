@@ -1,5 +1,8 @@
 # Changelog for Suppression
 
+1.0.2.0 - French translation added, thanks qux
+
+
 1.0.1.0 - Missed adding the dependencies in the about-file
 
 
