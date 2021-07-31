@@ -12,15 +12,14 @@ namespace SuppressionMod
         // Token: 0x06000007 RID: 7 RVA: 0x000024EC File Offset: 0x000006EC
         [HarmonyPrefix]
         public static void TestMethod(ref Vector3 rootLoc, ref float angle, ref Rot4 bodyFacing,
-            PawnRenderer __instance)
+            PawnRenderer __instance, Pawn ___pawn)
         {
-            var value = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
-            if (value.GetPosture() > PawnPosture.Standing)
+            if (___pawn.GetPosture() > PawnPosture.Standing)
             {
                 return;
             }
 
-            var hediff = value.health.hediffSet.hediffs.Find(x => x.def == SuppressionUtil.suppressed);
+            var hediff = ___pawn.health.hediffSet.hediffs.Find(x => x.def == SuppressionUtil.suppressed);
             if (hediff is not {CurStageIndex: >= 3})
             {
                 return;

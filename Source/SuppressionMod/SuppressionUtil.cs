@@ -38,7 +38,7 @@ namespace SuppressionMod
         public static HediffDef suppressed;
 
         // Token: 0x04000006 RID: 6
-        public static float[] movespeedFactorByHediffStage =
+        public static readonly float[] movespeedFactorByHediffStage =
         {
             1f,
             1f,
@@ -48,7 +48,7 @@ namespace SuppressionMod
         };
 
         // Token: 0x04000007 RID: 7
-        public static float[] accuracyFactorByHediffStage =
+        public static readonly float[] accuracyFactorByHediffStage =
         {
             1f,
             1f,
@@ -58,6 +58,7 @@ namespace SuppressionMod
         };
 
         // Token: 0x04000008 RID: 8
+        // ReSharper disable once FieldCanBeMadeReadOnly.Global
         public static float[] aimingDelayFactorByHediffStage =
         {
             1f,
@@ -68,7 +69,7 @@ namespace SuppressionMod
         };
 
         // Token: 0x04000009 RID: 9
-        public static float[] coverAdvantageFactorByHediffStage =
+        public static readonly float[] coverAdvantageFactorByHediffStage =
         {
             1f,
             1f,
@@ -78,7 +79,7 @@ namespace SuppressionMod
         };
 
         // Token: 0x0400000E RID: 14
-        public static float severityReductionPerSecond = 0.1f;
+        public static readonly float severityReductionPerSecond = 0.1f;
 
         // Token: 0x0400000F RID: 15
         public static float severityReductionPerTick = severityReductionPerSecond / 60f;
@@ -87,19 +88,19 @@ namespace SuppressionMod
         public static int severityDelayTicks = 60;
 
         // Token: 0x04000012 RID: 18
-        public static int maxDistanceToImpact = 3;
+        public static readonly int maxDistanceToImpact = 3;
 
         // Token: 0x04000013 RID: 19
-        public static int minDistanceFromLauncher = 5;
+        public static readonly int minDistanceFromLauncher = 5;
 
         // Token: 0x04000014 RID: 20
-        public static int maxDistanceToImpactSquared = maxDistanceToImpact * maxDistanceToImpact;
+        public static readonly int maxDistanceToImpactSquared = maxDistanceToImpact * maxDistanceToImpact;
 
         // Token: 0x04000015 RID: 21
-        public static int minDistanceFromLauncherSquared = minDistanceFromLauncher * minDistanceFromLauncher;
+        public static readonly int minDistanceFromLauncherSquared = minDistanceFromLauncher * minDistanceFromLauncher;
 
         // Token: 0x04000016 RID: 22
-        public static float maxDistanceToImpactSquaredInv = 1f / minDistanceFromLauncherSquared;
+        public static readonly float maxDistanceToImpactSquaredInv = 1f / minDistanceFromLauncherSquared;
 
         // Token: 0x0600000B RID: 11 RVA: 0x000027F0 File Offset: 0x000009F0
         public static float CalcImpactSeverity(float impactDamage)

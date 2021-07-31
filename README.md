@@ -5,8 +5,19 @@
 Update of YAYO (Original by D A)s mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2016866580
 
+- Added french translation, thanks qux!
+
 ![Image](https://i.imgur.com/7Gzt3Rg.png)
 
+
+[table]
+    [tr]
+        [td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)
+[/td]
+        [td]https://github.com/emipa606/Suppression]![Image](https://i.imgur.com/kTkpTOE.png)
+[/td]
+    [/tr]
+[/table]
 	
 ![Image](https://i.imgur.com/NOW7jU1.png)
 

@@ -1,5 +1,8 @@
 # Changelog for Suppression
 
+1.0.3.0 - Optimizations in the harmony-patches, thanks to NotFood for the suggestion
+
+
 1.0.2.0 - French translation added, thanks qux
 
 

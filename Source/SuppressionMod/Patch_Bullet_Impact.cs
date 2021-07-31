@@ -10,26 +10,25 @@ namespace SuppressionMod
     {
         // Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
         [HarmonyPrefix]
-        public static bool BulletImpactStuff(ref Thing hitThing, Bullet __instance)
+        public static bool BulletImpactStuff(ref Thing hitThing, Bullet __instance, Thing ___launcher)
         {
-            var value = Traverse.Create(__instance).Field("launcher").GetValue<Thing>();
             var damageAmount = __instance.def.projectile.GetDamageAmount(1f);
             var num = SuppressionUtil.CalcImpactSeverity(damageAmount);
             var allPawnsSpawned = __instance.Map.mapPawns.AllPawnsSpawned;
             foreach (var pawn in allPawnsSpawned)
             {
-                if (pawn == null || pawn == value || pawn.RaceProps.Animal || !pawn.RaceProps.Humanlike ||
+                if (pawn == null || pawn == ___launcher || pawn.RaceProps.Animal || !pawn.RaceProps.Humanlike ||
                     !pawn.RaceProps.IsFlesh)
                 {
                     continue;
                 }
 
-                var num2 = pawn.PositionHeld.DistanceToSquared(value.PositionHeld);
+                var num2 = pawn.PositionHeld.DistanceToSquared(___launcher.PositionHeld);
                 var num3 = pawn.PositionHeld.DistanceToSquared(__instance.PositionHeld);
                 var differentFactions = false;
-                if (value.Faction != null)
+                if (___launcher.Faction != null)
                 {
-                    differentFactions = pawn.Faction != value.Faction;
+                    differentFactions = pawn.Faction != ___launcher.Faction;
                 }
 
                 if (!differentFactions || num3 > SuppressionUtil.maxDistanceToImpactSquared ||

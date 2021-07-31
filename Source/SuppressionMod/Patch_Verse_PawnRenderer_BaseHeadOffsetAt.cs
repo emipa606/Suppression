@@ -10,11 +10,11 @@ namespace SuppressionMod
     {
         // Token: 0x06000006 RID: 6 RVA: 0x00002394 File Offset: 0x00000594
         [HarmonyPostfix]
-        public static void OffsetSuppressedHead(Rot4 rotation, PawnRenderer __instance, ref Vector3 __result)
+        public static void OffsetSuppressedHead(Rot4 rotation, PawnRenderer __instance, ref Vector3 __result,
+            ref Pawn ___pawn)
         {
-            var value = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
-            var hediff = value.health.hediffSet.hediffs.Find(x => x.def == SuppressionUtil.suppressed);
-            if (!SuppressionUtil.ShouldPawnDuck(ref value, ref hediff))
+            var hediff = ___pawn.health.hediffSet.hediffs.Find(x => x.def == SuppressionUtil.suppressed);
+            if (!SuppressionUtil.ShouldPawnDuck(ref ___pawn, ref hediff))
             {
                 return;
             }
