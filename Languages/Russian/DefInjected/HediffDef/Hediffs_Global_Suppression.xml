@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Effect inside the health tab. Accumulates the suppression, makes it fade and adds in the negative effects of suppression. -->
+  <Suppressed.label>Подавление</Suppressed.label>
+  <Suppressed.stages.0.label>0 Спокойствие</Suppressed.stages.0.label>
+  <Suppressed.stages.1.label>-1 Стресс</Suppressed.stages.1.label>
+  <Suppressed.stages.2.label>-2 Дрожь</Suppressed.stages.2.label>
+  <Suppressed.stages.3.label>-3 Смятение: снижается скорость атаки, скорость передвижения и точность</Suppressed.stages.3.label>
+  <Suppressed.stages.4.label>-4 Страх: снижается скорость атаки, скорость передвижения и точность</Suppressed.stages.4.label>
+</LanguageData>
