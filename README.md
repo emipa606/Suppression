@@ -8,6 +8,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2016866580
 - Added french translation, thanks qux!
 - Chinese translation https://steamcommunity.com/sharedfiles/filedetails/?id=2566690133
 - Russian translation added, thank you Hellengi!
+- Removed legacy HugsLib requirement
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 
