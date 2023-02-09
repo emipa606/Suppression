@@ -1,4 +1,3 @@
-using System.Reflection;
 using HarmonyLib;
 using Verse;
 
@@ -8,8 +7,7 @@ namespace SuppressionMod;
 internal static class Patch_Verse_ShotReport_HitReportFor
 {
     [HarmonyPostfix]
-    public static void ApplySuppressionFactors(ref Thing caster, ref LocalTargetInfo target,
-        ref ShotReport __result)
+    public static void ApplySuppressionFactors(ref LocalTargetInfo target, ref ShotReport __result)
     {
         if (target.Pawn == null)
         {
@@ -18,22 +16,12 @@ internal static class Patch_Verse_ShotReport_HitReportFor
 
         var hediff = target.Pawn.health.hediffSet.hediffs.Find(x => x.def == SuppressionUtil.suppressed);
 
-        var pawn = Traverse.Create(target).Field("thingInt").GetValue<Thing>() as Pawn;
+        var pawn = target.thingInt as Pawn;
         if (!SuppressionUtil.ShouldPawnDuck(ref pawn, ref hediff))
         {
             return;
         }
 
-        var num = SuppressionUtil.coverAdvantageFactorByHediffStage[hediff.CurStageIndex];
-        object obj = __result;
-        var field = obj.GetType().GetField("factorFromTargetSize",
-            BindingFlags.Instance | BindingFlags.NonPublic);
-        if (field is not null)
-        {
-            var num2 = (float)field.GetValue(obj);
-            field.SetValue(obj, num2 * num);
-        }
-
-        __result = (ShotReport)obj;
+        __result.factorFromTargetSize *= SuppressionUtil.coverAdvantageFactorByHediffStage[hediff.CurStageIndex];
     }
 }

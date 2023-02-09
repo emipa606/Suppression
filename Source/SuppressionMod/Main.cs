@@ -5,9 +5,9 @@ using Verse;
 namespace SuppressionMod;
 
 [StaticConstructorOnStartup]
-public static class Settings
+public static class Main
 {
-    static Settings()
+    static Main()
     {
         SuppressionUtil.suppressed = HediffDef.Named("Suppressed");
         new Harmony("Mlie.SuppressionMod").PatchAll(Assembly.GetExecutingAssembly());

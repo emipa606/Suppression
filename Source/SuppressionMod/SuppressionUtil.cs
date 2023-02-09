@@ -44,7 +44,6 @@ public static class SuppressionUtil
         0.4f
     };
 
-    // ReSharper disable once FieldCanBeMadeReadOnly.Global
     public static float[] aimingDelayFactorByHediffStage =
     {
         1f,

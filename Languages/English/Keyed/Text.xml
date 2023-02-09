@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Sup.OnlyRangedPawns>Only ranged pawns get suppressed</Sup.OnlyRangedPawns>
+  <Sup.OnlyRangedPawnsTT>Only pawns using a ranged weapon will get suppressed</Sup.OnlyRangedPawnsTT>
+  <Sup.modVersion>Installed mod-version: {0}</Sup.modVersion>
+</LanguageData>

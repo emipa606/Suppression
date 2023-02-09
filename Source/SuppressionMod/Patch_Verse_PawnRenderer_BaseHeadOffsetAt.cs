@@ -8,8 +8,7 @@ namespace SuppressionMod;
 internal static class Patch_Verse_PawnRenderer_BaseHeadOffsetAt
 {
     [HarmonyPostfix]
-    public static void OffsetSuppressedHead(Rot4 rotation, PawnRenderer __instance, ref Vector3 __result,
-        ref Pawn ___pawn)
+    public static void OffsetSuppressedHead(Rot4 rotation, ref Vector3 __result, ref Pawn ___pawn)
     {
         var hediff = ___pawn.health.hediffSet.hediffs.Find(x => x.def == SuppressionUtil.suppressed);
         if (!SuppressionUtil.ShouldPawnDuck(ref ___pawn, ref hediff))

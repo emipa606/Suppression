@@ -8,7 +8,7 @@ namespace SuppressionMod;
 internal static class Patch_Bullet_Impact
 {
     [HarmonyPrefix]
-    public static bool BulletImpactStuff(ref Thing hitThing, Bullet __instance, Thing ___launcher)
+    public static bool BulletImpactStuff(Bullet __instance, Thing ___launcher)
     {
         var damageAmount = __instance.def.projectile.GetDamageAmount(1f);
         var num = SuppressionUtil.CalcImpactSeverity(damageAmount);
@@ -17,6 +17,12 @@ internal static class Patch_Bullet_Impact
         {
             if (pawn == null || pawn == ___launcher || pawn.RaceProps.Animal || !pawn.RaceProps.Humanlike ||
                 !pawn.RaceProps.IsFlesh)
+            {
+                continue;
+            }
+
+            if (SuppressionModMod.instance.Settings.OnlyRangedPawns &&
+                (pawn.equipment.Primary == null || !pawn.equipment.Primary.def.IsRangedWeapon))
             {
                 continue;
             }

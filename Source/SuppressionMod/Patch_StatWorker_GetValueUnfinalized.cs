@@ -35,39 +35,38 @@ internal static class Patch_StatWorker_GetValueUnfinalized
     }
 
     [HarmonyPostfix]
-    public static void ApplySuppressionFactors(StatRequest req, StatWorker __instance, ref float __result)
+    public static void ApplySuppressionFactors(StatRequest req, ref float __result, StatDef ___stat)
     {
-        if (!(req.Thing is Pawn pawn))
+        if (req.Thing is not Pawn pawn)
         {
             return;
         }
 
-        var value = Traverse.Create(__instance).Field("stat").GetValue<StatDef>();
-        if (value != StatDefOf.MoveSpeed && value != StatDefOf.ShootingAccuracyPawn &&
-            value != StatDefOf.AimingDelayFactor)
+        if (___stat != StatDefOf.MoveSpeed && ___stat != StatDefOf.ShootingAccuracyPawn &&
+            ___stat != StatDefOf.AimingDelayFactor)
         {
             return;
         }
 
         var hediff = pawn.health.hediffSet.hediffs.Find(x => x.def == SuppressionUtil.suppressed);
-        if (hediff == null || hediff.CurStage == null)
+        if (hediff?.CurStage == null)
         {
             return;
         }
 
-        if (value == StatDefOf.MoveSpeed)
+        if (___stat == StatDefOf.MoveSpeed)
         {
             __result = CalcScaledMoveSpeed(__result, ref hediff);
             return;
         }
 
-        if (value == StatDefOf.ShootingAccuracyPawn)
+        if (___stat == StatDefOf.ShootingAccuracyPawn)
         {
             __result = CalcScaledAccuracy(__result, ref hediff);
             return;
         }
 
-        if (value == StatDefOf.AimingDelayFactor)
+        if (___stat == StatDefOf.AimingDelayFactor)
         {
             __result = CalcScaledAimingDelayFactor(__result, ref hediff);
         }
