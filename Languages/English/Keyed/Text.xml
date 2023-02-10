@@ -2,5 +2,7 @@
 <LanguageData>
   <Sup.OnlyRangedPawns>Only ranged pawns get suppressed</Sup.OnlyRangedPawns>
   <Sup.OnlyRangedPawnsTT>Only pawns using a ranged weapon will get suppressed</Sup.OnlyRangedPawnsTT>
+  <Sup.MoodAffectsChance>Mood affect suppression chance</Sup.MoodAffectsChance>
+  <Sup.MoodAffectsChanceTT>Pawns with a lower mood have a higher chance of getting suppressed</Sup.MoodAffectsChanceTT>
   <Sup.modVersion>Installed mod-version: {0}</Sup.modVersion>
 </LanguageData>

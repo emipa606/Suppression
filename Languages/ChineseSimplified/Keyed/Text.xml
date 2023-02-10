@@ -4,4 +4,6 @@
   <Sup.OnlyRangedPawns>只有范围内的棋子会被压制</Sup.OnlyRangedPawns>
   <Sup.OnlyRangedPawnsTT>只有使用远程武器的小兵才会被压制</Sup.OnlyRangedPawnsTT>
   <Sup.modVersion>已安装的mod-version。{0}</Sup.modVersion>
+  <Sup.MoodAffectsChance>心情影响抑制的机会</Sup.MoodAffectsChance>
+  <Sup.MoodAffectsChanceTT>情绪低落的棋子被压制的机会较高</Sup.MoodAffectsChanceTT>
 </LanguageData>

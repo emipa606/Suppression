@@ -4,4 +4,6 @@
   <Sup.OnlyRangedPawns>Nur Fernkampfspielfiguren werden unterdrückt</Sup.OnlyRangedPawns>
   <Sup.OnlyRangedPawnsTT>Nur Spielfiguren, die eine Fernkampfwaffe benutzen, werden unterdrückt.</Sup.OnlyRangedPawnsTT>
   <Sup.modVersion>Installierte Mod-Version: {0}</Sup.modVersion>
+  <Sup.MoodAffectsChance>Chance auf Unterdrückung von Stimmungsschwankungen</Sup.MoodAffectsChance>
+  <Sup.MoodAffectsChanceTT>Bauern mit schlechterer Stimmung haben eine höhere Chance, unterdrückt zu werden</Sup.MoodAffectsChanceTT>
 </LanguageData>

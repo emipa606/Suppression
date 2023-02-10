@@ -21,27 +21,33 @@ internal static class Patch_Bullet_Impact
                 continue;
             }
 
-            if (SuppressionModMod.instance.Settings.OnlyRangedPawns &&
+            if (SuppressionMod.instance.Settings.OnlyRangedPawns &&
                 (pawn.equipment.Primary == null || !pawn.equipment.Primary.def.IsRangedWeapon))
             {
                 continue;
             }
 
-            var num2 = pawn.PositionHeld.DistanceToSquared(___launcher.PositionHeld);
-            var num3 = pawn.PositionHeld.DistanceToSquared(__instance.PositionHeld);
-            var differentFactions = false;
-            if (___launcher.Faction != null)
-            {
-                differentFactions = pawn.Faction != ___launcher.Faction;
-            }
-
-            if (!differentFactions || num3 > SuppressionUtil.maxDistanceToImpactSquared ||
-                num2 < SuppressionUtil.minDistanceFromLauncherSquared)
+            if (pawn.Faction == ___launcher.Faction)
             {
                 continue;
             }
 
-            var impactSquaredInv = 1f - (num3 * SuppressionUtil.maxDistanceToImpactSquaredInv);
+            if (SuppressionMod.instance.Settings.MoodAffectsChance &&
+                Rand.Value < pawn.needs?.mood?.CurLevelPercentage - 0.1f)
+            {
+                continue;
+            }
+
+            var distanceToShooter = pawn.PositionHeld.DistanceToSquared(___launcher.PositionHeld);
+            var distanceToImpact = pawn.PositionHeld.DistanceToSquared(__instance.PositionHeld);
+
+            if (distanceToImpact > SuppressionUtil.maxDistanceToImpactSquared ||
+                distanceToShooter < SuppressionUtil.minDistanceFromLauncherSquared)
+            {
+                continue;
+            }
+
+            var impactSquaredInv = 1f - (distanceToImpact * SuppressionUtil.maxDistanceToImpactSquaredInv);
             var hediff = HediffMaker.MakeHediff(SuppressionUtil.suppressed, pawn);
             hediff.Severity = num * impactSquaredInv;
             pawn.health.AddHediff(hediff);

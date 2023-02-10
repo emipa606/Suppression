@@ -5,12 +5,12 @@ using Verse;
 namespace SuppressionMod;
 
 [StaticConstructorOnStartup]
-internal class SuppressionModMod : Mod
+internal class SuppressionMod : Mod
 {
     /// <summary>
     ///     The instance of the settings to be read by the mod
     /// </summary>
-    public static SuppressionModMod instance;
+    public static SuppressionMod instance;
 
     private static string currentVersion;
 
@@ -23,7 +23,7 @@ internal class SuppressionModMod : Mod
     ///     Constructor
     /// </summary>
     /// <param name="content"></param>
-    public SuppressionModMod(ModContentPack content) : base(content)
+    public SuppressionMod(ModContentPack content) : base(content)
     {
         instance = this;
 
@@ -68,6 +68,8 @@ internal class SuppressionModMod : Mod
         listing_Standard.Gap();
         listing_Standard.CheckboxLabeled("Sup.OnlyRangedPawns".Translate(), ref Settings.OnlyRangedPawns,
             "Sup.OnlyRangedPawnsTT".Translate());
+        listing_Standard.CheckboxLabeled("Sup.MoodAffectsChance".Translate(), ref Settings.MoodAffectsChance,
+            "Sup.MoodAffectsChanceTT".Translate());
         if (currentVersion != null)
         {
             listing_Standard.Gap();

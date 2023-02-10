@@ -9,6 +9,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2016866580
 - Chinese translation https://steamcommunity.com/sharedfiles/filedetails/?id=2566690133
 - Russian translation added, thank you Hellengi!
 - Removed legacy HugsLib requirement
+- Added option to only apply suppression to pawns using a ranged weapon
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 
@@ -72,6 +73,4 @@ Origianl mod by D A(Sonya Wins) https://steamcommunity.com/sharedfiles/filedetai
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-
-
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2559826227]Last updated 2023-02-09
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2559826227]Last updated 2023-02-10

@@ -1,5 +1,9 @@
 # Changelog for Suppression
 
+1.4.3 - Added option for mood to affect the chance of getting suppressed, higher mood equals lower chance of getting suppressed..
+Used DeepL to update translations for ChineseSimplified, French, German, Russian
+
+
 1.4.2 - Added option to only apply suppression to pawns using a ranged weapon.
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 

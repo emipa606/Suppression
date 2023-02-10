@@ -7,6 +7,7 @@ namespace SuppressionMod;
 /// </summary>
 internal class SuppressionModSettings : ModSettings
 {
+    public bool MoodAffectsChance;
     public bool OnlyRangedPawns;
 
     /// <summary>
@@ -16,5 +17,6 @@ internal class SuppressionModSettings : ModSettings
     {
         base.ExposeData();
         Scribe_Values.Look(ref OnlyRangedPawns, "OnlyRangedPawns");
+        Scribe_Values.Look(ref MoodAffectsChance, "MoodAffectsChance");
     }
 }

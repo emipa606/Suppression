@@ -4,4 +4,6 @@
   <Sup.OnlyRangedPawns>Seuls les pions à distance sont supprimés</Sup.OnlyRangedPawns>
   <Sup.OnlyRangedPawnsTT>Seuls les pions utilisant une arme à distance seront supprimés.</Sup.OnlyRangedPawnsTT>
   <Sup.modVersion>Version installée du module : {0}</Sup.modVersion>
+  <Sup.MoodAffectsChance>Chance de suppression de l'effet de l'humeur</Sup.MoodAffectsChance>
+  <Sup.MoodAffectsChanceTT>Les pions dont l'humeur est plus faible ont plus de chances d'être supprimés.</Sup.MoodAffectsChanceTT>
 </LanguageData>

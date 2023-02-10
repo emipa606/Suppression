@@ -4,4 +4,6 @@
   <Sup.OnlyRangedPawns>Подавляются только ранговые пешки</Sup.OnlyRangedPawns>
   <Sup.OnlyRangedPawnsTT>Только пешки, использующие дальнобойное оружие, будут подавлены</Sup.OnlyRangedPawnsTT>
   <Sup.modVersion>Установленная версия мода: {0}</Sup.modVersion>
+  <Sup.MoodAffectsChance>Шанс подавления влияния настроения</Sup.MoodAffectsChance>
+  <Sup.MoodAffectsChanceTT>Пешки с более низким настроением имеют больше шансов быть подавленными</Sup.MoodAffectsChanceTT>
 </LanguageData>
