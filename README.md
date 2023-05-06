@@ -10,6 +10,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2016866580
 - Russian translation added, thank you Hellengi!
 - Removed legacy HugsLib requirement
 - Added option to only apply suppression to pawns using a ranged weapon
+- Added option for mood to affect the chance of getting suppressed, higher mood equals lower chance of getting suppressed.
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 
@@ -73,4 +74,4 @@ Origianl mod by D A(Sonya Wins) https://steamcommunity.com/sharedfiles/filedetai
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2559826227]Last updated 2023-02-10
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2559826227]Last updated 2023-05-06

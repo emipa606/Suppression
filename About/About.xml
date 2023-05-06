@@ -31,12 +31,13 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2016866580
 - Russian translation added, thank you Hellengi!
 - Removed legacy HugsLib requirement
 - Added option to only apply suppression to pawns using a ranged weapon
+- Added option for mood to affect the chance of getting suppressed, higher mood equals lower chance of getting suppressed.
 
 [img]https://i.imgur.com/pufA0kM.png[/img]
 
 [table]
     [tr]
-        [td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+        [td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
         [td][url=https://github.com/emipa606/Suppression][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
     [/tr]
     [tr]
@@ -97,5 +98,5 @@ Origianl mod by D A(Sonya Wins) https://steamcommunity.com/sharedfiles/filedetai
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [/list]
-[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2559826227]Last updated 2023-02-10[/url]</description>
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2559826227]Last updated 2023-05-06[/url]</description>
 </ModMetaData>

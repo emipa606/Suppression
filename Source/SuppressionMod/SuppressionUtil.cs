@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -77,6 +78,10 @@ public static class SuppressionUtil
     public static readonly int minDistanceFromLauncherSquared = minDistanceFromLauncher * minDistanceFromLauncher;
 
     public static readonly float maxDistanceToImpactSquaredInv = 1f / minDistanceFromLauncherSquared;
+    public static bool biotechActive;
+    public static GeneDef unstoppableGene;
+
+    public static Dictionary<Pawn, bool> unstoppablePawns;
 
     public static float CalcImpactSeverity(float impactDamage)
     {

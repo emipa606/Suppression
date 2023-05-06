@@ -32,6 +32,26 @@ internal static class Patch_Bullet_Impact
                 continue;
             }
 
+            if (SuppressionUtil.biotechActive)
+            {
+                if (SuppressionUtil.unstoppablePawns.TryGetValue(pawn, out var unstoppable))
+                {
+                    if (unstoppable)
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    SuppressionUtil.unstoppablePawns.Add(pawn,
+                        pawn.genes?.HasGene(SuppressionUtil.unstoppableGene) == true);
+                    if (SuppressionUtil.unstoppablePawns[pawn])
+                    {
+                        continue;
+                    }
+                }
+            }
+
             if (SuppressionMod.instance.Settings.MoodAffectsChance &&
                 Rand.Value < pawn.needs?.mood?.CurLevelPercentage - 0.1f)
             {

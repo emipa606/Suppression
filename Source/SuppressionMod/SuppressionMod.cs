@@ -17,7 +17,7 @@ internal class SuppressionMod : Mod
     /// <summary>
     ///     The private settings
     /// </summary>
-    private SuppressionModSettings settings;
+    public readonly SuppressionModSettings Settings;
 
     /// <summary>
     ///     Constructor
@@ -26,25 +26,8 @@ internal class SuppressionMod : Mod
     public SuppressionMod(ModContentPack content) : base(content)
     {
         instance = this;
-
+        Settings = GetSettings<SuppressionModSettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
-    }
-
-    /// <summary>
-    ///     The instance-settings for the mod
-    /// </summary>
-    internal SuppressionModSettings Settings
-    {
-        get
-        {
-            if (settings == null)
-            {
-                settings = GetSettings<SuppressionModSettings>();
-            }
-
-            return settings;
-        }
-        set => settings = value;
     }
 
     /// <summary>
