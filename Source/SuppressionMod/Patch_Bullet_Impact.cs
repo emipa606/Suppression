@@ -1,3 +1,4 @@
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -10,17 +11,17 @@ internal static class Patch_Bullet_Impact
     [HarmonyPrefix]
     public static bool BulletImpactStuff(Bullet __instance, Thing ___launcher)
     {
+        if (___launcher == null)
+        {
+            return true;
+        }
+
         var damageAmount = __instance.def.projectile.GetDamageAmount(1f);
         var num = SuppressionUtil.CalcImpactSeverity(damageAmount);
-        var allPawnsSpawned = __instance.Map.mapPawns.AllPawnsSpawned;
+        var allPawnsSpawned = __instance.Map.mapPawns.AllPawnsSpawned.Where(pawn =>
+            pawn != null && pawn != ___launcher && pawn.RaceProps is { Humanlike: true, IsFlesh: true });
         foreach (var pawn in allPawnsSpawned)
         {
-            if (pawn == null || pawn == ___launcher || pawn.RaceProps.Animal || !pawn.RaceProps.Humanlike ||
-                !pawn.RaceProps.IsFlesh)
-            {
-                continue;
-            }
-
             if (SuppressionMod.instance.Settings.OnlyRangedPawns &&
                 (pawn.equipment.Primary == null || !pawn.equipment.Primary.def.IsRangedWeapon))
             {

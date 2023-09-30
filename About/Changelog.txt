@@ -1,5 +1,8 @@
 # Changelog for Suppression
 
+1.4.5 - Fixed an issue for weapons with generated projectiles that has no actual origin
+
+
 1.4.4 - Pawns with the Unstoppable gene should no longer be suppressed
 
 

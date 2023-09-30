@@ -74,4 +74,6 @@ Origianl mod by D A(Sonya Wins) https://steamcommunity.com/sharedfiles/filedetai
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2559826227]Last updated 2023-05-06
+
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2559826227]![Image](https://img.shields.io/github/v/release/emipa606/Suppression?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
+
