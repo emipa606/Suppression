@@ -112,9 +112,46 @@ public static class SuppressionUtil
         return (3f * num) + (-2f * num2);
     }
 
-    public static bool ShouldPawnDuck(ref Pawn pawn, ref Hediff suppressedHediff)
+    public static bool ShouldDuck(this Pawn pawn)
     {
-        return pawn != null && pawn.GetPosture() == PawnPosture.Standing &&
-               suppressedHediff is { CurStageIndex: >= 3 };
+        if (pawn != null)
+        {
+            var posture = pawn.GetPosture();
+            if (posture == PawnPosture.Standing)
+            {
+                var suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
+                return suppressedHediff != null && suppressedHediff.CurStageIndex == 3;
+            }
+        }
+        return false;
+    }
+
+    public static bool ShouldCrawl(this Pawn pawn)
+    {
+        if (pawn != null)
+        {
+            var posture = pawn.GetPosture();
+            if (posture == PawnPosture.Standing)
+            {
+                var suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
+                return suppressedHediff != null && suppressedHediff.CurStageIndex >= 4;
+            }
+        }
+        return false;
+    }
+
+    public static bool ShouldDuckOrCrawl(this Pawn pawn, out Hediff suppressedHediff)
+    {
+        if (pawn != null)
+        {
+            var posture = pawn.GetPosture();
+            if (posture == PawnPosture.Standing)
+            {
+                suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
+                return suppressedHediff != null && suppressedHediff.CurStageIndex >= 3;
+            }
+        }
+        suppressedHediff = null;
+        return false;
     }
 }

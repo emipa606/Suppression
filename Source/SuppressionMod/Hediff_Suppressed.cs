@@ -49,15 +49,40 @@ public class Hediff_Suppressed : HediffWithComps
         Severity -= Math.Min(f / 60f, num / 60f);
     }
 
-    public override void Notify_PawnDied()
+    private int stageCanBeChangedTick;
+
+    public override float Severity 
+    { 
+        get => base.Severity;
+        set
+        {
+            var oldValue = base.Severity;
+            var oldStage = base.CurStageIndex;
+            base.Severity = value;
+            if (oldStage != base.CurStageIndex)
+            {
+                if (stageCanBeChangedTick == 0 || Find.TickManager.TicksGame >= stageCanBeChangedTick)
+                {
+                    stageCanBeChangedTick = (int)(Find.TickManager.TicksGame + (Rand.Range(1f, 4f) * 60));
+                }
+                else
+                {
+                    base.Severity = oldValue;
+                }
+            }
+        } 
+    }
+
+    public override void Notify_PawnDied(DamageInfo? dinfo, Hediff culprit = null)
     {
         pawn.health.RemoveHediff(this);
-        base.Notify_PawnDied();
+        base.Notify_PawnDied(dinfo, culprit);
     }
 
     public override void ExposeData()
     {
         base.ExposeData();
         Scribe_Values.Look(ref rapidImpactBonusFactor, "rapidImpactBonusFactor", 1f);
+        Scribe_Values.Look(ref stageCanBeChangedTick, "stageCanBeChangedTick");
     }
 }
