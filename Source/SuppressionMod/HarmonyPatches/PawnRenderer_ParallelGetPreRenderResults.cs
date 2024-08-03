@@ -1,35 +1,36 @@
-using HarmonyLib;
-using RimWorld;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection.Emit;
+using HarmonyLib;
 using UnityEngine;
 using Verse;
 
-namespace SuppressionMod;
+namespace SuppressionMod.HarmonyPatches;
 
 [HarmonyPatch(typeof(PawnRenderer), "ParallelGetPreRenderResults")]
-internal static class Patch_Verse_PawnRenderer_ParallelGetPreRenderResults
+internal static class PawnRenderer_ParallelGetPreRenderResults
 {
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> codeInstructions)
     {
-        var codes = codeInstructions.ToList();
-        foreach (var codeInstruction in codes)
+        foreach (var codeInstruction in codeInstructions)
         {
             yield return codeInstruction;
-            if (codeInstruction.opcode == OpCodes.Stloc_S && codeInstruction.operand is LocalBuilder lb && lb.LocalIndex == 8)
+            if (codeInstruction.opcode != OpCodes.Stloc_S ||
+                codeInstruction.operand is not LocalBuilder { LocalIndex: 8 })
             {
-                yield return new CodeInstruction(OpCodes.Ldarg_0);
-                yield return new CodeInstruction(OpCodes.Ldloca_S, 5);
-                yield return new CodeInstruction(OpCodes.Ldloca_S, 7);
-                yield return new CodeInstruction(OpCodes.Ldloc_S, 8);
-                yield return new CodeInstruction(OpCodes.Call, 
-                    AccessTools.Method(typeof(Patch_Verse_PawnRenderer_ParallelGetPreRenderResults), "ModifyBobyPosAndAngle"));
+                continue;
             }
+
+            yield return new CodeInstruction(OpCodes.Ldarg_0);
+            yield return new CodeInstruction(OpCodes.Ldloca_S, 5);
+            yield return new CodeInstruction(OpCodes.Ldloca_S, 7);
+            yield return new CodeInstruction(OpCodes.Ldloc_S, 8);
+            yield return new CodeInstruction(OpCodes.Call,
+                AccessTools.Method(typeof(PawnRenderer_ParallelGetPreRenderResults),
+                    nameof(ModifyBobyPosAndAngle)));
         }
     }
 
-    public static void ModifyBobyPosAndAngle(PawnRenderer __instance, ref Vector3 bodyPos, ref float bodyAngle, 
+    public static void ModifyBobyPosAndAngle(PawnRenderer __instance, ref Vector3 bodyPos, ref float bodyAngle,
         Rot4 bodyFacing)
     {
         var num = 0f;
@@ -65,10 +66,18 @@ internal static class Patch_Verse_PawnRenderer_ParallelGetPreRenderResults
         {
             switch (bodyFacing.AsInt)
             {
-                case 0: num = 0f; break;
-                case 1: num = 45f; break;
-                case 2: num = 180f; break;
-                case 3: num = -45f; break;
+                case 0:
+                    num = 0f;
+                    break;
+                case 1:
+                    num = 45f;
+                    break;
+                case 2:
+                    num = 180f;
+                    break;
+                case 3:
+                    num = -45f;
+                    break;
             }
         }
 

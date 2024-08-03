@@ -3,10 +3,10 @@ using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace SuppressionMod;
+namespace SuppressionMod.HarmonyPatches;
 
 [HarmonyPatch(typeof(Bullet), "Impact")]
-internal static class Patch_Bullet_Impact
+internal static class Bullet_Impact
 {
     [HarmonyPrefix]
     public static bool BulletImpactStuff(Bullet __instance, Thing ___launcher)
@@ -45,7 +45,7 @@ internal static class Patch_Bullet_Impact
                 else
                 {
                     SuppressionUtil.unstoppablePawns.Add(pawn,
-                        pawn.genes?.HasGene(SuppressionUtil.unstoppableGene) == true);
+                        pawn.genes?.HasActiveGene(SuppressionUtil.unstoppableGene) == true);
                     if (SuppressionUtil.unstoppablePawns[pawn])
                     {
                         continue;

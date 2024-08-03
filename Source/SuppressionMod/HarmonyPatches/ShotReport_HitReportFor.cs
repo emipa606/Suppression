@@ -1,10 +1,11 @@
 using HarmonyLib;
 using Verse;
 
-namespace SuppressionMod;
+namespace SuppressionMod.HarmonyPatches;
 
-[HarmonyPatch(typeof(ShotReport), "HitReportFor", typeof(Thing), typeof(Verb), typeof(LocalTargetInfo))]
-internal static class Patch_Verse_ShotReport_HitReportFor
+[HarmonyPatch(typeof(ShotReport), nameof(ShotReport.HitReportFor), typeof(Thing), typeof(Verb),
+    typeof(LocalTargetInfo))]
+internal static class ShotReport_HitReportFor
 {
     [HarmonyPostfix]
     public static void ApplySuppressionFactors(ref LocalTargetInfo target, ref ShotReport __result)
@@ -13,6 +14,7 @@ internal static class Patch_Verse_ShotReport_HitReportFor
         {
             return;
         }
+
         var pawn = target.thingInt as Pawn;
         if (pawn.ShouldDuckOrCrawl(out var hediff))
         {

@@ -3,10 +3,10 @@ using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace SuppressionMod;
+namespace SuppressionMod.HarmonyPatches;
 
-[HarmonyPatch(typeof(StatWorker), "GetValueUnfinalized", typeof(StatRequest), typeof(bool))]
-internal static class Patch_StatWorker_GetValueUnfinalized
+[HarmonyPatch(typeof(StatWorker), nameof(StatWorker.GetValueUnfinalized), typeof(StatRequest), typeof(bool))]
+internal static class StatWorker_GetValueUnfinalized
 {
     private static float CalcScaledAccuracy(float accuracy, ref Hediff hediff)
     {

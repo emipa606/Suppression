@@ -1,5 +1,8 @@
 # Changelog for Suppression
 
+1.5.0 - Updated for 1.5, major part of the code was done by the awesome Taranchuk!
+
+
 1.4.5 - Fixed an issue for weapons with generated projectiles that has no actual origin
 
 

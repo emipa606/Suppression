@@ -2,10 +2,10 @@ using HarmonyLib;
 using UnityEngine;
 using Verse;
 
-namespace SuppressionMod;
+namespace SuppressionMod.HarmonyPatches;
 
-[HarmonyPatch(typeof(PawnRenderer), "BaseHeadOffsetAt", typeof(Rot4))]
-internal static class Patch_Verse_PawnRenderer_BaseHeadOffsetAt
+[HarmonyPatch(typeof(PawnRenderer), nameof(PawnRenderer.BaseHeadOffsetAt), typeof(Rot4))]
+internal static class PawnRenderer_BaseHeadOffsetAt
 {
     [HarmonyPostfix]
     public static void OffsetSuppressedHead(Rot4 rotation, ref Vector3 __result, ref Pawn ___pawn)
@@ -30,6 +30,7 @@ internal static class Patch_Verse_PawnRenderer_BaseHeadOffsetAt
                     break;
             }
         }
+
         __result.x += num;
         __result.z += num2;
     }

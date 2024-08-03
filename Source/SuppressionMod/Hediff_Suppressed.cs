@@ -9,6 +9,32 @@ public class Hediff_Suppressed : HediffWithComps
 
     private float rapidImpactBonusFactor = 1f;
 
+    private int stageCanBeChangedTick;
+
+    public override float Severity
+    {
+        get => base.Severity;
+        set
+        {
+            var oldValue = base.Severity;
+            var oldStage = base.CurStageIndex;
+            base.Severity = value;
+            if (oldStage == base.CurStageIndex)
+            {
+                return;
+            }
+
+            if (stageCanBeChangedTick == 0 || Find.TickManager.TicksGame >= stageCanBeChangedTick)
+            {
+                stageCanBeChangedTick = (int)(Find.TickManager.TicksGame + (Rand.Range(1f, 4f) * 60));
+            }
+            else
+            {
+                base.Severity = oldValue;
+            }
+        }
+    }
+
     public override bool TryMergeWith(Hediff other)
     {
         if (pawn.Dead || pawn.Downed)
@@ -30,7 +56,7 @@ public class Hediff_Suppressed : HediffWithComps
         }
         else
         {
-            rapidImpactBonusFactor = 1f;
+            rapidImpactBonusFactor = rapidImpactBonusFactorInitial;
         }
 
         return true;
@@ -47,30 +73,6 @@ public class Hediff_Suppressed : HediffWithComps
         var pow = (float)Math.Pow(tickPart, num2);
         var f = num * pow;
         Severity -= Math.Min(f / 60f, num / 60f);
-    }
-
-    private int stageCanBeChangedTick;
-
-    public override float Severity 
-    { 
-        get => base.Severity;
-        set
-        {
-            var oldValue = base.Severity;
-            var oldStage = base.CurStageIndex;
-            base.Severity = value;
-            if (oldStage != base.CurStageIndex)
-            {
-                if (stageCanBeChangedTick == 0 || Find.TickManager.TicksGame >= stageCanBeChangedTick)
-                {
-                    stageCanBeChangedTick = (int)(Find.TickManager.TicksGame + (Rand.Range(1f, 4f) * 60));
-                }
-                else
-                {
-                    base.Severity = oldValue;
-                }
-            }
-        } 
     }
 
     public override void Notify_PawnDied(DamageInfo? dinfo, Hediff culprit = null)

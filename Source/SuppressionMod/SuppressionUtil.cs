@@ -7,14 +7,6 @@ namespace SuppressionMod;
 
 public static class SuppressionUtil
 {
-    public const int facingNorth = 0;
-
-    public const int facingEast = 1;
-
-    public const int facingSouth = 2;
-
-    public const int facingWest = 3;
-
     public const float suppressedMovespeedMin = 0.7f;
 
     public const int duckingHediffStage = 3;
@@ -23,49 +15,47 @@ public static class SuppressionUtil
 
     public const float ticksPerSecond = 60f;
 
-    public const float severityDelaySeconds = 1f;
-
     public static HediffDef suppressed;
 
     public static readonly float[] movespeedFactorByHediffStage =
-    {
+    [
         1f,
         1f,
         1f,
         0.8f,
         0.65f
-    };
+    ];
 
     public static readonly float[] accuracyFactorByHediffStage =
-    {
+    [
         1f,
         1f,
         1f,
         0.8f,
         0.4f
-    };
+    ];
 
-    public static float[] aimingDelayFactorByHediffStage =
-    {
+    public static readonly float[] aimingDelayFactorByHediffStage =
+    [
         1f,
         1f,
         1f,
         1.5f,
         3f
-    };
+    ];
 
     public static readonly float[] coverAdvantageFactorByHediffStage =
-    {
+    [
         1f,
         1f,
         1f,
         0.85f,
-        0.7f
-    };
+        suppressedMovespeedMin
+    ];
 
     public static readonly float severityReductionPerSecond = 0.1f;
 
-    public static float severityReductionPerTick = severityReductionPerSecond / 60f;
+    public static float severityReductionPerTick = severityReductionPerSecond / ticksPerSecond;
 
     public static int severityDelayTicks = 60;
 
@@ -114,43 +104,37 @@ public static class SuppressionUtil
 
     public static bool ShouldDuck(this Pawn pawn)
     {
-        if (pawn != null)
+        var posture = pawn?.GetPosture();
+        if (posture != PawnPosture.Standing)
         {
-            var posture = pawn.GetPosture();
-            if (posture == PawnPosture.Standing)
-            {
-                var suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
-                return suppressedHediff != null && suppressedHediff.CurStageIndex == 3;
-            }
+            return false;
         }
-        return false;
+
+        var suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
+        return suppressedHediff is { CurStageIndex: duckingHediffStage };
     }
 
     public static bool ShouldCrawl(this Pawn pawn)
     {
-        if (pawn != null)
+        var posture = pawn?.GetPosture();
+        if (posture != PawnPosture.Standing)
         {
-            var posture = pawn.GetPosture();
-            if (posture == PawnPosture.Standing)
-            {
-                var suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
-                return suppressedHediff != null && suppressedHediff.CurStageIndex >= 4;
-            }
+            return false;
         }
-        return false;
+
+        var suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
+        return suppressedHediff is { CurStageIndex: >= proneHediffStage };
     }
 
     public static bool ShouldDuckOrCrawl(this Pawn pawn, out Hediff suppressedHediff)
     {
-        if (pawn != null)
+        var posture = pawn?.GetPosture();
+        if (posture == PawnPosture.Standing)
         {
-            var posture = pawn.GetPosture();
-            if (posture == PawnPosture.Standing)
-            {
-                suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
-                return suppressedHediff != null && suppressedHediff.CurStageIndex >= 3;
-            }
+            suppressedHediff = pawn.health.hediffSet.GetFirstHediffOfDef(suppressed);
+            return suppressedHediff is { CurStageIndex: >= duckingHediffStage };
         }
+
         suppressedHediff = null;
         return false;
     }
