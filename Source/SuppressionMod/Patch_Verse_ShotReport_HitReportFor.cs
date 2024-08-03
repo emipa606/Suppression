@@ -13,15 +13,10 @@ internal static class Patch_Verse_ShotReport_HitReportFor
         {
             return;
         }
-
-        var hediff = target.Pawn.health.hediffSet.hediffs.Find(x => x.def == SuppressionUtil.suppressed);
-
         var pawn = target.thingInt as Pawn;
-        if (!SuppressionUtil.ShouldPawnDuck(ref pawn, ref hediff))
+        if (pawn.ShouldDuckOrCrawl(out var hediff))
         {
-            return;
+            __result.factorFromTargetSize *= SuppressionUtil.coverAdvantageFactorByHediffStage[hediff.CurStageIndex];
         }
-
-        __result.factorFromTargetSize *= SuppressionUtil.coverAdvantageFactorByHediffStage[hediff.CurStageIndex];
     }
 }

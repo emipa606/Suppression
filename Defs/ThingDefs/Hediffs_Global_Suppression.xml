@@ -9,7 +9,7 @@
     <defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
     <makesAlert>false</makesAlert>
     <minSeverity>0.001</minSeverity>
-    <maxSeverity>6</maxSeverity>
+    <maxSeverity>9</maxSeverity>
     <!-- Lower than 4 disables prone/cowering -->
     <comps>
       <li Class="HediffCompProperties_Disappears">
