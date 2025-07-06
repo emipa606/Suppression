@@ -14,23 +14,24 @@ internal static class PawnRenderer_ParallelGetPreRenderResults
         foreach (var codeInstruction in codeInstructions)
         {
             yield return codeInstruction;
+            // Inject after stloc.s 9 (bodyFacing)
             if (codeInstruction.opcode != OpCodes.Stloc_S ||
-                codeInstruction.operand is not LocalBuilder { LocalIndex: 8 })
+                codeInstruction.operand is not LocalBuilder { LocalIndex: 9 })
             {
                 continue;
             }
 
-            yield return new CodeInstruction(OpCodes.Ldarg_0);
-            yield return new CodeInstruction(OpCodes.Ldloca_S, 5);
-            yield return new CodeInstruction(OpCodes.Ldloca_S, 7);
-            yield return new CodeInstruction(OpCodes.Ldloc_S, 8);
+            yield return new CodeInstruction(OpCodes.Ldarg_0); // this (PawnRenderer)
+            yield return new CodeInstruction(OpCodes.Ldloca_S, 6); // ref Vector3 bodyPos
+            yield return new CodeInstruction(OpCodes.Ldloca_S, 8); // ref float bodyAngle
+            yield return new CodeInstruction(OpCodes.Ldloc_S, 9); // Rot4 bodyFacing
             yield return new CodeInstruction(OpCodes.Call,
                 AccessTools.Method(typeof(PawnRenderer_ParallelGetPreRenderResults),
-                    nameof(ModifyBobyPosAndAngle)));
+                    nameof(ModifyBodyPosAndAngle)));
         }
     }
 
-    public static void ModifyBobyPosAndAngle(PawnRenderer __instance, ref Vector3 bodyPos, ref float bodyAngle,
+    public static void ModifyBodyPosAndAngle(PawnRenderer __instance, ref Vector3 bodyPos, ref float bodyAngle,
         Rot4 bodyFacing)
     {
         var num = 0f;

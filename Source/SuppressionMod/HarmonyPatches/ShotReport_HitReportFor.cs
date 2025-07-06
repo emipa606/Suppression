@@ -7,8 +7,7 @@ namespace SuppressionMod.HarmonyPatches;
     typeof(LocalTargetInfo))]
 internal static class ShotReport_HitReportFor
 {
-    [HarmonyPostfix]
-    public static void ApplySuppressionFactors(ref LocalTargetInfo target, ref ShotReport __result)
+    public static void Postfix(ref LocalTargetInfo target, ref ShotReport __result)
     {
         if (target.Pawn == null)
         {

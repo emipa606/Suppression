@@ -5,24 +5,23 @@ using Verse;
 
 namespace SuppressionMod.HarmonyPatches;
 
-[HarmonyPatch(typeof(Bullet), "Impact")]
+[HarmonyPatch(typeof(Bullet), nameof(Bullet.Impact))]
 internal static class Bullet_Impact
 {
-    [HarmonyPrefix]
-    public static bool BulletImpactStuff(Bullet __instance, Thing ___launcher)
+    public static bool Prefix(Bullet __instance, Thing ___launcher)
     {
         if (___launcher == null)
         {
             return true;
         }
 
-        var damageAmount = __instance.def.projectile.GetDamageAmount(1f);
+        var damageAmount = __instance.def.projectile.GetDamageAmount(1f, ___launcher);
         var num = SuppressionUtil.CalcImpactSeverity(damageAmount);
         var allPawnsSpawned = __instance.Map.mapPawns.AllPawnsSpawned.Where(pawn =>
             pawn != null && pawn != ___launcher && pawn.RaceProps is { Humanlike: true, IsFlesh: true });
         foreach (var pawn in allPawnsSpawned)
         {
-            if (SuppressionMod.instance.Settings.OnlyRangedPawns &&
+            if (SuppressionMod.Instance.Settings.OnlyRangedPawns &&
                 (pawn.equipment.Primary == null || !pawn.equipment.Primary.def.IsRangedWeapon))
             {
                 continue;
@@ -53,7 +52,7 @@ internal static class Bullet_Impact
                 }
             }
 
-            if (SuppressionMod.instance.Settings.MoodAffectsChance &&
+            if (SuppressionMod.Instance.Settings.MoodAffectsChance &&
                 Rand.Value < pawn.needs?.mood?.CurLevelPercentage - 0.1f)
             {
                 continue;

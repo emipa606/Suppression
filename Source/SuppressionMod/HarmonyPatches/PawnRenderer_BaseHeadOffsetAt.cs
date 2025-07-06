@@ -8,7 +8,7 @@ namespace SuppressionMod.HarmonyPatches;
 internal static class PawnRenderer_BaseHeadOffsetAt
 {
     [HarmonyPostfix]
-    public static void OffsetSuppressedHead(Rot4 rotation, ref Vector3 __result, ref Pawn ___pawn)
+    public static void Postfix(Rot4 rotation, ref Vector3 __result, ref Pawn ___pawn)
     {
         var num = 0f;
         var num2 = 0f;

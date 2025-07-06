@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: suppressed -->
+  <Suppressed.label>suppressed</Suppressed.label>
+  <!-- EN: Causes pawns to become suppressed if they take too much heavy fire. Pawns will make themselves a smaller target, causing them to move slower, aim worse and aim slower. Pawns recover from suppression over time, greater when they are not taking much fire. -->
+  <Suppressed.description>Causes pawns to become suppressed if they take too much heavy fire. Pawns will make themselves a smaller target, causing them to move slower, aim worse and aim slower. Pawns recover from suppression over time, greater when they are not taking much fire.</Suppressed.description>
+  <!-- EN: unsettled -->
+  <Suppressed.stages.unsettled.label>unsettled</Suppressed.stages.unsettled.label>
+  <!-- EN: shaken -->
+  <Suppressed.stages.shaken.label>shaken</Suppressed.stages.shaken.label>
+  <!-- EN: wavering -->
+  <Suppressed.stages.wavering.label>wavering</Suppressed.stages.wavering.label>
+  <!-- EN: ducking -->
+  <Suppressed.stages.ducking.label>ducking</Suppressed.stages.ducking.label>
+  <!-- EN: cowering -->
+  <Suppressed.stages.cowering.label>cowering</Suppressed.stages.cowering.label>
+</LanguageData>

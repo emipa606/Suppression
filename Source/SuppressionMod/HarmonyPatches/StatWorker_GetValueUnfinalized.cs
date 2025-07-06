@@ -8,12 +8,12 @@ namespace SuppressionMod.HarmonyPatches;
 [HarmonyPatch(typeof(StatWorker), nameof(StatWorker.GetValueUnfinalized), typeof(StatRequest), typeof(bool))]
 internal static class StatWorker_GetValueUnfinalized
 {
-    private static float CalcScaledAccuracy(float accuracy, ref Hediff hediff)
+    private static float calcScaledAccuracy(float accuracy, ref Hediff hediff)
     {
         return accuracy * SuppressionUtil.accuracyFactorByHediffStage[hediff.CurStageIndex];
     }
 
-    private static float CalcScaledMoveSpeed(float moveSpeed, ref Hediff hediff)
+    private static float calcScaledMoveSpeed(float moveSpeed, ref Hediff hediff)
     {
         float result;
         if (moveSpeed <= 0.7f)
@@ -29,13 +29,12 @@ internal static class StatWorker_GetValueUnfinalized
         return result;
     }
 
-    private static float CalcScaledAimingDelayFactor(float aimingDelayFactor, ref Hediff hediff)
+    private static float calcScaledAimingDelayFactor(float aimingDelayFactor, ref Hediff hediff)
     {
         return aimingDelayFactor * SuppressionUtil.aimingDelayFactorByHediffStage[hediff.CurStageIndex];
     }
 
-    [HarmonyPostfix]
-    public static void ApplySuppressionFactors(StatRequest req, ref float __result, StatDef ___stat)
+    public static void Postfix(StatRequest req, ref float __result, StatDef ___stat)
     {
         if (req.Thing is not Pawn pawn)
         {
@@ -56,19 +55,19 @@ internal static class StatWorker_GetValueUnfinalized
 
         if (___stat == StatDefOf.MoveSpeed)
         {
-            __result = CalcScaledMoveSpeed(__result, ref hediff);
+            __result = calcScaledMoveSpeed(__result, ref hediff);
             return;
         }
 
         if (___stat == StatDefOf.ShootingAccuracyPawn)
         {
-            __result = CalcScaledAccuracy(__result, ref hediff);
+            __result = calcScaledAccuracy(__result, ref hediff);
             return;
         }
 
         if (___stat == StatDefOf.AimingDelayFactor)
         {
-            __result = CalcScaledAimingDelayFactor(__result, ref hediff);
+            __result = calcScaledAimingDelayFactor(__result, ref hediff);
         }
     }
 }

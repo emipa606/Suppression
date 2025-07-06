@@ -7,13 +7,13 @@ namespace SuppressionMod;
 
 public static class SuppressionUtil
 {
-    public const float suppressedMovespeedMin = 0.7f;
+    private const float suppressedMovespeedMin = 0.7f;
 
-    public const int duckingHediffStage = 3;
+    private const int duckingHediffStage = 3;
 
-    public const int proneHediffStage = 4;
+    private const int proneHediffStage = 4;
 
-    public const float ticksPerSecond = 60f;
+    private const float ticksPerSecond = 60f;
 
     public static HediffDef suppressed;
 
@@ -53,15 +53,15 @@ public static class SuppressionUtil
         suppressedMovespeedMin
     ];
 
-    public static readonly float severityReductionPerSecond = 0.1f;
+    private static readonly float severityReductionPerSecond = 0.1f;
 
     public static float severityReductionPerTick = severityReductionPerSecond / ticksPerSecond;
 
     public static int severityDelayTicks = 60;
 
-    public static readonly int maxDistanceToImpact = 3;
+    private static readonly int maxDistanceToImpact = 3;
 
-    public static readonly int minDistanceFromLauncher = 5;
+    private static readonly int minDistanceFromLauncher = 5;
 
     public static readonly int maxDistanceToImpactSquared = maxDistanceToImpact * maxDistanceToImpact;
 
