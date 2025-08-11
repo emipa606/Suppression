@@ -9,6 +9,11 @@ public static class PawnRenderUtility_DrawEquipmentAndApparelExtras
 {
     public static void Prefix(Pawn pawn, ref Vector3 drawPos, Rot4 facing)
     {
+        if (pawn.IsSubhuman || pawn.IsShambler)
+        {
+            return;
+        }
+
         if (pawn.Rotation != Rot4.South || !pawn.ShouldCrawl())
         {
             return;

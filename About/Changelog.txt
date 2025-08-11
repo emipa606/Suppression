@@ -1,5 +1,8 @@
 # Changelog for Suppression
 
+1.6.1 - Supression should no longer affect entities and shamblers
+
+
 1.6.0 - Mod updated for 1.6 and passed autotests
 
 

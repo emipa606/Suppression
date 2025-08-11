@@ -34,6 +34,11 @@ internal static class PawnRenderer_ParallelGetPreRenderResults
     public static void ModifyBodyPosAndAngle(PawnRenderer __instance, ref Vector3 bodyPos, ref float bodyAngle,
         Rot4 bodyFacing)
     {
+        if (__instance.pawn.IsSubhuman || __instance.pawn.IsShambler)
+        {
+            return;
+        }
+
         var num = 0f;
         var num2 = 0f;
         var num3 = 0f;

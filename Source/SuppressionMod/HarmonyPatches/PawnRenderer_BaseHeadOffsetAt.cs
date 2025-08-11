@@ -7,9 +7,13 @@ namespace SuppressionMod.HarmonyPatches;
 [HarmonyPatch(typeof(PawnRenderer), nameof(PawnRenderer.BaseHeadOffsetAt), typeof(Rot4))]
 internal static class PawnRenderer_BaseHeadOffsetAt
 {
-    [HarmonyPostfix]
     public static void Postfix(Rot4 rotation, ref Vector3 __result, ref Pawn ___pawn)
     {
+        if (___pawn.IsSubhuman || ___pawn.IsShambler)
+        {
+            return;
+        }
+
         var num = 0f;
         var num2 = 0f;
         if (___pawn.ShouldDuck())

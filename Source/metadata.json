@@ -7,10 +7,10 @@
   "Patches": false,
   "Defs": true,
   "Assemblies": true,
-  "LinesOfCode": 20736,
+  "LinesOfCode": 21332,
   "LinesOfXML": 4017,
-  "CodeBaseSize": 70,
-  "LastXmlCleaning": "2025-07-06T20:46:45.2427735+02:00",
+  "CodeBaseSize": 69,
+  "LastXmlCleaning": "2025-08-11T20:09:40.1409784+02:00",
   "SearchTags": [
     " suppression mechanics",
     " mood mechanic"

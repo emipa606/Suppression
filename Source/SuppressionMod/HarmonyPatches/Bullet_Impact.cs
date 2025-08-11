@@ -21,6 +21,11 @@ internal static class Bullet_Impact
             pawn != null && pawn != ___launcher && pawn.RaceProps is { Humanlike: true, IsFlesh: true });
         foreach (var pawn in allPawnsSpawned)
         {
+            if (pawn.IsSubhuman || pawn.IsShambler)
+            {
+                continue;
+            }
+
             if (SuppressionMod.Instance.Settings.OnlyRangedPawns &&
                 (pawn.equipment.Primary == null || !pawn.equipment.Primary.def.IsRangedWeapon))
             {

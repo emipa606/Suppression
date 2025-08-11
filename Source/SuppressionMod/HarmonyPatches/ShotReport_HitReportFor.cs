@@ -14,7 +14,11 @@ internal static class ShotReport_HitReportFor
             return;
         }
 
-        var pawn = target.thingInt as Pawn;
+        if (target.thingInt is not Pawn pawn || pawn.IsSubhuman || pawn.IsShambler)
+        {
+            return;
+        }
+
         if (pawn.ShouldDuckOrCrawl(out var hediff))
         {
             __result.factorFromTargetSize *= SuppressionUtil.coverAdvantageFactorByHediffStage[hediff.CurStageIndex];
